@@ -1,23 +1,18 @@
 from fastapi import FastAPI, HTTPException
-import requests
 from ciscoconfparse2 import CiscoConfParse
 from security.security_analyzer import SecurityAnalyzer
 from security.default_rules import default_rules
+from config_fetcher import fetch_config  # Import the refactored function
 
 app = FastAPI()
-CONFIG_SERVICE_URL = "http://localhost:8000/config"
 
 @app.post("/analyze")
 def analyze_configuration():
     """Fetch config from config-service & analyze security issues."""
     try:
-        response = requests.get(CONFIG_SERVICE_URL)
-        if response.status_code != 200:
-            raise HTTPException(status_code=500, detail="Failed to fetch configuration")
+        config_text = fetch_config()  # Use the refactored function
 
-        config_text = response.text
         parse = CiscoConfParse(config_text.splitlines())
-
         analyzer = SecurityAnalyzer(default_rules)
         findings = analyzer.run(parse)
 
