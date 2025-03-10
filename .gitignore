@@ -1,0 +1,60 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env
+*.env
+
+# Logs
+logs/
+*.log
+*.out
+*.err
+log/
+
+# Unit test / coverage reports
+.coverage
+htmlcov/
+*.cover
+.cache
+nosetests.xml
+coverage.xml
+*.pytest_cache/
+
+# Pytest cache
+.pytest_cache/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.swp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Compiled C files
+*.so
+
+# Database
+*.sqlite3
+*.db
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Generated API keys or credentials
+api_keys.json
+secrets.json
+
+# FastAPI build files
+dist/
+build/
+
+# Ignore Docker-related files
+Dockerfile
+.dockerignore
